@@ -22,7 +22,7 @@ mysql:
 ## 権限エラー系解消コマンド
 
 ```
-# Laravelでエラーが出るとき
+# UnexpectedValueException
 docker compose exec php chown -R www-data:www-data storage
 
 # 保存エラーが出るとき
