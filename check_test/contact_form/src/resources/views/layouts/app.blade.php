@@ -8,7 +8,8 @@
 
     <title>FashionablyLate</title>
 
-    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/sanitize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/common.css') }}" />
 
     @yield('css')
 </head>

@@ -1,0 +1,19 @@
+/* ヘッダー */
+.header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #E0DFDE;
+}
+
+.header__logo {
+    font-family: 'Inika', serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #8B7969;
+    text-decoration: none;
+}
+@media screen and (min-width: 769px) {
+    .header__logo {
+        font-size: 32px;
+    }
+}
