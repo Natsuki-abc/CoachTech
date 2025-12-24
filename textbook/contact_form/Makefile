@@ -29,7 +29,7 @@ db.console:
 	@$(DC) exec mysql laravel_db -U laravel_user -p laravel_pass
 
 cache clear:
-	@$(DC) exec backend php artisan config:clear
-	@$(DC) exec backend php artisan route:clear
-	@$(DC) exec backend php artisan view:clear
-	@$(DC) exec backend php artisan cache:clear
+	@$(DC) exec php php artisan config:clear
+	@$(DC) exec php php artisan route:clear
+	@$(DC) exec php php artisan view:clear
+	@$(DC) exec php php artisan cache:clear
