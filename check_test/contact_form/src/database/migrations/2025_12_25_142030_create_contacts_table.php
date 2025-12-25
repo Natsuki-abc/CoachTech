@@ -14,9 +14,11 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->uuid('id')->primary();
+
+            $table->uuid('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+
             $table->string('first_name');
             $table->string('last_name');
             $table->tinyInteger('gender');
@@ -25,6 +27,7 @@ class CreateContactsTable extends Migration
             $table->string('address');
             $table->string('building')->nullable();
             $table->text('detail');
+
             $table->timestamps();
         });
     }

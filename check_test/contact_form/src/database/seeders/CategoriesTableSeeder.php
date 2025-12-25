@@ -17,31 +17,31 @@ class CategoriesTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'content' => '商品のお届けについて',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'content' => '商品の交換について',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'content' => '商品トラブル',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'content' => 'ショップへのお問い合わせ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'uuid' => Str::uuid(),
+                'id' => Str::uuid(),
                 'content' => 'その他',
                 'created_at' => now(),
                 'updated_at' => now(),
