@@ -17,7 +17,7 @@
 <body>
     @include('layouts.parts.header')
 
-    <main>
+    <main class="main">
         @yield('content')
     </main>
 </body>
