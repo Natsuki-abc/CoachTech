@@ -7,6 +7,9 @@ use App\Http\Requests\ContactRequest;
 use App\Services\ContactService;
 use App\Models\Contact;
 use App\Models\Category;
+use Exception;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
@@ -53,10 +56,10 @@ class ContactController extends Controller
 
         $category = $this->contact_service->getCategoryContent($request->category_id);
         $gender = $this->contact_service->getGenderLabel($request->gender);
-        if (is_array($category) || is_array($gender)) {
+        if (!$category || !$gender) {
             $errorMessages = array_merge(
-                is_array($category) ? $category : [],
-                is_array($gender) ? $gender : []
+                $category ? [] : ['category_id' => 'カテゴリが見つかりませんでした。'],
+                $gender ? [] : ['gender' => '性別が見つかりませんでした。'],
             );
             return redirect()->back()->withErrors($errorMessages);
         }
@@ -81,10 +84,20 @@ class ContactController extends Controller
             return redirect(route('index'));
         }
 
-        $result = $this->contact_service->register($data);
-        $request->session()->forget('contact_data');
+        try {
+            $contact = $this->contact_service->register($data);
+            $request->session()->forget('contact_data');
 
-        return redirect()->route('thanks');
+            return redirect()->route('thanks');
+
+        } catch (QueryException $e) {
+            Log::critical('DB登録エラー', ['error' => $e->getMessage()]);
+            return $this->errorRedirect('データベースエラーが発生しました');
+
+        } catch (Exception $e) {
+            Log::critical('予期しないエラーが発生しました', ['error' => $e]);
+            return $this->errorRedirect('予期しないエラーが発生しました');
+        }
     }
 
     /**
@@ -96,5 +109,16 @@ class ContactController extends Controller
     public function thanks()
     {
         return view('thanks');
+    }
+
+    /**
+     * エラー時のリダイレクト処理
+     *
+     * @param string $message
+     * @return
+     */
+    private function errorRedirect($message)
+    {
+        return redirect()->route('index')->with('error', $message);
     }
 }

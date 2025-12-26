@@ -9,6 +9,12 @@
 <div class="contact-form">
     <h1 class="contact-form__title font-family__title">Contact</h1>
 
+    @if (session('error'))
+    <div class="contact-form__error">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <form action="{{ route('confirm') }}" method="post" novalidate>
     @csrf
         <table class="contact-form__table">

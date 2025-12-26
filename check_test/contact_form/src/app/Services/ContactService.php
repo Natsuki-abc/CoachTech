@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use DB;
 use App\Models\Contact;
 use App\Models\Category;
 
@@ -11,45 +12,35 @@ class ContactService
      * お問い合わせ登録処理
      *
      * @param array $data
-     * @return bool
+     * @return Contact
      */
-    public function register(array $data)
+    public function register($data)
     {
-        Contact::create($data);
-
-        return true;
+        return DB::transaction(function () use ($data) {
+            return Contact::create($data);
+        });
     }
 
     /**
      * カテゴリ名 取得
      *
-     * @param uuid $categoryId
-     * @return bool
+     * @param string $categoryId
+     * @return collection|null
      */
-    public function getCategoryContent(string $categoryId)
+    public function getCategoryContent($categoryId)
     {
-        $category = Category::find($categoryId);
-        if (!$category) {
-            return ['category_id' => 'カテゴリが見つかりませんでした。'];
-        }
-
-        return $category;
+        return Category::find($categoryId);
     }
 
     /**
      * 性別名 取得
      *
      * @param int $genderId
-     * @return bool
+     * @return string|null
      */
-    public function getGenderLabel(int $genderId)
+    public function getGenderLabel($genderId)
     {
-        $gender = Contact::GENDER[$genderId] ?? '';
-        if (!$gender) {
-            return ['gender' => '性別が見つかりませんでした。'];
-        }
-
-        return $gender;
+        return Contact::GENDER[$genderId] ?? null;
     }
 
 }
