@@ -14,11 +14,10 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', [ContactController::class, 'index']);
+// お問い合わせフォーム
+Route::get('/', [ContactController::class, 'index'])->name('index');
+Route::post('confirm', [ContactController::class, 'confirm'])->name('confirm');
+Route::post('store', [ContactController::class, 'store'])->name('store');
+Route::get('thanks', [ContactController::class, 'thanks'])->name('thanks');
 
-Route::prefix('contacts')
-    ->name('contacts.')
-    ->group(function () {
-        Route::post('confirm', [ContactController::class, 'confirm']);
-        Route::post('/', [ContactController::class, 'store']);
-    });
+// 管理画面

@@ -1,0 +1,48 @@
+.contact-form__row--confirm {
+    padding-bottom: 0;
+    margin-bottom: 24px;
+}
+@media screen and (min-width: 769px) {
+    .contact-form__table--confirm {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    .contact-form__row--confirm {
+        margin-bottom: 0;
+        border-bottom: 1px solid #E0DFDE;
+        border-right: 1px solid #E0DFDE;
+    }
+    .contact-form__row--confirm:first-child {
+        border-top: 1px solid #E0DFDE;
+    }
+}
+
+.contact-form__column--confirm,
+.contact-form__value--confirm {
+    padding-left: 8px;
+}
+.contact-form__column--confirm {
+    display: flex;
+    align-items: center;
+    background: var(--theme-color-light);
+    color: #fff;
+}
+@media screen and (min-width: 769px) {
+    .contact-form__column--confirm,
+    .contact-form__value--confirm {
+        margin-bottom: 0;
+        padding: 24px 0 24px 40px;
+    }
+}
+
+.contact-form__btn {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+@media screen and (min-width: 769px) {
+    .contact-form__btn {
+        margin-top: 24px;
+    }
+}
