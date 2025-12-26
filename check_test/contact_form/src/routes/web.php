@@ -17,6 +17,7 @@ use App\Http\Controllers\ContactController;
 // お問い合わせフォーム
 Route::get('/', [ContactController::class, 'index'])->name('index');
 Route::post('confirm', [ContactController::class, 'confirm'])->name('confirm');
-Route::post('thanks', [ContactController::class, 'thanks'])->name('thanks');
+Route::post('store', [ContactController::class, 'store'])->name('store');
+Route::get('thanks', [ContactController::class, 'thanks'])->name('thanks');
 
 // 管理画面

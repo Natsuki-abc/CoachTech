@@ -65,3 +65,7 @@
         gap: 24px;
     }
 }
+
+.contact-form__error {
+    color: #f08080;
+}

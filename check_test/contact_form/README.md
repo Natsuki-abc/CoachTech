@@ -31,10 +31,9 @@ sudo chown -R $USER:$USER .
 
 ## 使用技術(実行環境)
 
-TODO
-- PHP8.3.0
-- Laravel8.83.27
-- MySQL8.0.26
+- PHP 8.1.34
+- Laravel 8.83.8
+- MySQL 8.0.26
 
 ## ER 図
 
