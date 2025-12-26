@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 class CategoriesTableSeeder extends Seeder
@@ -15,37 +15,30 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            [
+        if (Category::count() > 0) {
+            $this->command->info('Categories already seeded!');
+            return;
+        }
+
+        $categories = [
+            '商品のお届けについて',
+            '商品の交換について',
+            '商品トラブル',
+            'ショップへのお問い合わせ',
+            'その他',
+        ];
+
+        $now = now();
+        $data = [];
+        foreach ($categories as $content) {
+            $data[] = [
                 'id' => Str::uuid(),
-                'content' => '商品のお届けについて',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => Str::uuid(),
-                'content' => '商品の交換について',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => Str::uuid(),
-                'content' => '商品トラブル',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => Str::uuid(),
-                'content' => 'ショップへのお問い合わせ',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => Str::uuid(),
-                'content' => 'その他',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+                'content' => $content,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+
+        Category::insert($data);
     }
 }

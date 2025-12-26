@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::orderBy('created_at')->get();
+        $categories = Category::orderBy('created_at')->pluck('content', 'id');
 
         $data = Contact::FORM_KEYS;
         if ($request->session()->has('contact_data')) {
@@ -54,11 +54,11 @@ class ContactController extends Controller
         $category = $this->contact_service->getCategoryContent($request->category_id);
         $gender = $this->contact_service->getGenderLabel($request->gender);
         if (is_array($category) || is_array($gender)) {
-            $error_messages = array_merge(
+            $errorMessages = array_merge(
                 is_array($category) ? $category : [],
                 is_array($gender) ? $gender : []
             );
-            return redirect()->back()->withErrors($error_messages);
+            return redirect()->back()->withErrors($errorMessages);
         }
 
         return view('confirm', [

@@ -108,9 +108,9 @@
                     <div class="select-wrapper">
                         <select name="category_id">
                             <option value="">選択してください</option>
-                            @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{ old('category_id', $data['category_id']) == $category->id ? 'selected' : ''}}>
-                                {{ $category->content }}
+                            @foreach ($categories as $id => $content)
+                            <option value="{{ $id }}" {{ old('category_id', $data['category_id']) == $id ? 'selected' : ''}}>
+                                {{ $content }}
                             </option>
                             @endforeach
                         </select>
