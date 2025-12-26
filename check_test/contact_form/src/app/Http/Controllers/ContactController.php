@@ -85,7 +85,7 @@ class ContactController extends Controller
         }
 
         try {
-            $contact = $this->contact_service->register($data);
+            $this->contact_service->register($data);
             $request->session()->forget('contact_data');
 
             return redirect()->route('thanks');

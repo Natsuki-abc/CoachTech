@@ -25,7 +25,7 @@ class ContactService
      * カテゴリ名 取得
      *
      * @param string $categoryId
-     * @return collection|null
+     * @return Category|null
      */
     public function getCategoryContent($categoryId)
     {
