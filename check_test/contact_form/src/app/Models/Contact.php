@@ -9,8 +9,30 @@ class Contact extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'category_id',
+        'last_name',
+        'first_name',
+        'gender',
+        'email',
+        'tel',
+        'address',
+        'building',
+        'detail',
+    ];
+
+    const FORM_KEYS = [
+        'category_id' => '',
+        'last_name' => '',
+        'first_name' => '',
+        'gender' => '',
+        'email' => '',
+        'tel1' => '',
+        'tel2' => '',
+        'tel3' => '',
+        'address' => '',
+        'building' => '',
+        'detail' => '',
     ];
 
     const GENDER = [

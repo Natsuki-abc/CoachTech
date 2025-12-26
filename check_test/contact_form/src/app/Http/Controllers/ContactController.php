@@ -25,13 +25,19 @@ class ContactController extends Controller
      * @param
      * @return Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('created_at')->get();
+
+        $data = Contact::FORM_KEYS;
+        if ($request->session()->has('contact_data')) {
+            $data = $request->session()->get('contact_data');
+        }
 
         return view('index', [
             'categories' => $categories,
             'genders' => Contact::GENDER,
+            'data' => $data,
         ]);
     }
 
@@ -44,11 +50,20 @@ class ContactController extends Controller
     public function confirm(ContactRequest $request)
     {
         $request->session()->put('contact_data', $request->validated());
-        $category = Category::find($request->category_id);
+
+        $category = $this->contact_service->getCategoryContent($request->category_id);
+        $gender = $this->contact_service->getGenderLabel($request->gender);
+        if (is_array($category) || is_array($gender)) {
+            $error_messages = array_merge(
+                is_array($category) ? $category : [],
+                is_array($gender) ? $gender : []
+            );
+            return redirect()->back()->withErrors($error_messages);
+        }
 
         return view('confirm', [
             'category' => $category->content,
-            'genders' => Contact::GENDER,
+            'gender' => $gender,
             'data' => $request->validated(),
         ]);
     }
@@ -61,10 +76,15 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        Contact::create($request->session()->get('contact_data'));
+        $data = $request->session()->get('contact_data');
+        if (!$data) {
+            return redirect(route('index'));
+        }
+
+        $result = $this->contact_service->register($data);
         $request->session()->forget('contact_data');
 
-        return redirect(route('thanks'));
+        return redirect()->route('thanks');
     }
 
     /**

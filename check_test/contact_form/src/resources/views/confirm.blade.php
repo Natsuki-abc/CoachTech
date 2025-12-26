@@ -21,7 +21,7 @@
             <tr class="contact-form__row contact-form__row--confirm">
                 <th class="contact-form__column contact-form__column--confirm">性別</th>
                 <td class="contact-form__value contact-form__value--confirm">
-                    {{ $genders[$data['gender']] }}
+                    {{ $gender }}
                 </td>
             </tr>
             <tr class="contact-form__row contact-form__row--confirm">

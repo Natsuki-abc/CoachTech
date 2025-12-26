@@ -35,7 +35,7 @@ class ContactRequest extends FormRequest
             'tel3' => ['required', 'numeric', 'digits_between:1,5'],
             'tel' => ['required', 'numeric', 'digits_between:10,11', 'phone:JP'],
             'address' => ['required', 'string', 'max:50'],
-            'building' => ['string', 'max:30'],
+            'building' => ['nullable', 'string', 'max:30'],
             'category_id' => ['required', 'exists:categories,id'],
             'detail' => ['required', 'string', 'max:120'],
         ];
