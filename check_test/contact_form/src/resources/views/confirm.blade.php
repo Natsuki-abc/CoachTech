@@ -33,7 +33,7 @@
             <tr class="contact-form__row contact-form__row--confirm">
                 <th class="contact-form__column contact-form__column--confirm">電話番号</th>
                 <td class="contact-form__value contact-form__value--confirm">
-                    {{ $data['tel1'] }} - {{ $data['tel2'] }} - {{ $data['tel3'] }}
+                    {{ $data['tel'] }}
                 </td>
             </tr>
             <tr class="contact-form__row contact-form__row--confirm">
