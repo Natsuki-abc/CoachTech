@@ -13,6 +13,9 @@ init:
 up:
 	@$(DC) up -d
 
+restart:
+	@$(DC) restart
+
 down:
 	@$(DC) down
 
@@ -26,7 +29,7 @@ db:
 	@$(DC) exec mysql bash
 
 db.console:
-	@$(DC) exec mysql laravel_db -U laravel_user -p laravel_pass
+	@$(DC) exec mysql mysql -u laravel_user -plaravel_pass laravel_db
 
 cache clear:
 	@$(DC) exec php php artisan config:clear
