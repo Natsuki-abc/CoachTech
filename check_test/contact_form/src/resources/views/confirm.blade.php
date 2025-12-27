@@ -7,10 +7,10 @@
 
 @section('content')
 <div class="contact-form">
-    <h1 class="contact-form__title font-family__title">Confirm</h1>
+    <h1 class="page-title font-family__title">Confirm</h1>
 
     <form action="{{ route('store') }}" method="post">
-    @csrf
+        @csrf
         <table class="contact-form__table contact-form__table--confirm">
             <tr class="contact-form__row contact-form__row--confirm">
                 <th class="contact-form__column contact-form__column--confirm">お名前</th>
