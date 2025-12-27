@@ -89,6 +89,9 @@ select {
     appearance: none;
     width: 70%;
 }
+input[type="date"]:hover, select:hover {
+    cursor: pointer;
+}
 
 .select-wrapper {
     position: relative;
