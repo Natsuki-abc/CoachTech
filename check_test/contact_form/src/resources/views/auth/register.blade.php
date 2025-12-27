@@ -19,7 +19,7 @@
                         <input type="text" name="name" placeholder="例：山田　太郎" value="{{ old('name') }}" />
 
                         @error('name')
-                        <div class="auth__error">
+                        <div class="error">
                             {{ $message }}
                         </div>
                         @enderror
@@ -31,7 +31,7 @@
                         <input type="email" name="email" placeholder="例：test@example.com" value="{{ old('email') }}" />
 
                         @error('email')
-                        <div class="auth__error">
+                        <div class="error">
                             {{ $message }}
                         </div>
                         @enderror
@@ -43,7 +43,7 @@
                         <input type="password" name="password" placeholder="例：coachtech1106" value="{{ old('password') }}" />
 
                         @error('password')
-                        <div class="auth__error">
+                        <div class="error">
                             {{ $message }}
                         </div>
                         @enderror

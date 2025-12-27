@@ -68,6 +68,10 @@
     color: #f08080;
 }
 
+.error {
+    color: #f08080;
+}
+
 /* フォーム */
 input, select, textarea {
     background: var(--element-background-color);
