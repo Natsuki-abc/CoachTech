@@ -40,7 +40,7 @@ return [
     'distinct'             => ':attributeの値が重複しています。',
     'email'                => ':attributeは、有効なメールアドレス形式で入力してください。',
     'ends_with'            => ':attributeは、次のうちのいずれかで終わらなければなりません。: :values',
-    'exists'               => '選択された:attributeは、有効ではありません。',
+    'exists'               => '選択された:attributeは、存在しません。',
     'file'                 => ':attributeはファイルでなければいけません。',
     'filled'               => ':attributeは必須です。',
     'gt'                   => [
