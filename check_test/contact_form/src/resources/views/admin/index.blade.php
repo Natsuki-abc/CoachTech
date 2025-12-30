@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/admin/admin.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/admin/detail.css') }}" />
 @endsection
 
 @section('content')
@@ -15,16 +16,15 @@
     </div>
     @endif
 
-    <form action="{{ route('confirm') }}" method="post" novalidate>
-        @csrf
+    <form action="{{ route('admin') }}" method="get" novalidate>
         <div class="admin__search">
             <div class="admin__search--inner">
-                <input class="admin__search--input" type="text" name="text" placeholder="名前やメールアドレスを入力してください" value="{{ old('text') }}" />
+                <input class="admin__search--input" type="text" name="text" placeholder="名前やメールアドレスを入力してください" value="{{ request('text') }}" />
                 <div class="select-wrapper">
                     <select class="admin__search--input admin__search--select" name="gender">
                         <option value="">性別</option>
                         @foreach ($genders as $key => $label)
-                            <option value="{{ $key }}">{{ $label }}</option>
+                            <option value="{{ $key }}" {{ request('gender') == $key ? 'selected' : '' }}>{{ $label }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -32,15 +32,15 @@
                     <select class="admin__search--input admin__search--select" name="category_id">
                         <option value="">お問い合わせの種類</option>
                         @foreach ($categories as $id => $content)
-                            <option value="{{ $id }}">{{ $content }}</option>
+                            <option value="{{ $id }}" {{ request('category_id') == $id ? 'selected' : '' }}>{{ $content }}</option>
                         @endforeach
                     </select>
                 </div>
-                <input class="admin__search--input" type="date" name="date">
+                <input class="admin__search--input" type="date" name="created_at" value="{{ request('date') }}">
             </div>
             <div class="admin__search--btn">
                 <button class="btn btn--primary" type="submit">検索</button>
-                <button class="btn btn--reset">リセット</button>
+                <a href="{{ route('admin') }}" class="btn btn--reset">リセット</a>
             </div>
         </div>
     </form>
@@ -61,9 +61,7 @@
             @foreach ($contacts as $contact)
                 <tr class="admin__row">
                     <td class="admin__value">
-                        <div class="admin__value--row">
-                            {{ $contact['last_name'] }}　{{ $contact['first_name'] }}
-                        </div>
+                        {{ $contact['last_name'] }}　{{ $contact['first_name'] }}
                     </td>
                     <td class="admin__value">
                         {{ $genders[$contact['gender']] }}
@@ -75,11 +73,28 @@
                         {{ $categories[$contact['category_id']] }}
                     </td>
                     <td class="admin__value">
-                        <button class="btn btn--secondary">詳細</button>
+                        <button type="button" class="btn btn--secondary admin__btn--detail js-admin__btn--detail"
+                            data-url="{{ route('detail', $contact['id']) }}">
+                            詳細
+                        </button>
                     </td>
                 </tr>
             @endforeach
         </table>
     </div>
+
+    {{-- 詳細モーダル --}}
+    <div class="admin-modal__overlay js-admin-modal__overlay"></div>
+    <div class="admin-modal js-admin-modal">
+        あいうえお
+        <div class="admin-modal__close-btn js-admin-modal__close-btn"></div>
+        <div class="admin-modal__inner js-admin-modal__inner">
+            {{-- ここに _detail_modal.blade.php が入る --}}
+        </div>
+    </div>
 </div>
+@endsection
+
+@section('javascript')
+<script src="{{ asset('assets/js/admin/detail.js') }}"></script>
 @endsection
