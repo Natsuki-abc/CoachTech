@@ -86,7 +86,6 @@
     {{-- 詳細モーダル --}}
     <div class="admin-modal__overlay js-admin-modal__overlay"></div>
     <div class="admin-modal js-admin-modal">
-        あいうえお
         <div class="admin-modal__close-btn js-admin-modal__close-btn"></div>
         <div class="admin-modal__inner js-admin-modal__inner">
             {{-- ここに _detail_modal.blade.php が入る --}}

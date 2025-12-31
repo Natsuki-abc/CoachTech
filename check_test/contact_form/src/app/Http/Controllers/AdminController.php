@@ -52,10 +52,11 @@ class AdminController extends Controller
     public function detail($id)
     {
         try {
-            $contact = Contract::findOrFail($id);
+            $contact = Contact::with('category')->find($id);
+            $genders = Contact::GENDER;
 
             // HTMLをレンダリングして返す
-            $html = view('admin.partials._detail_modal', compact('contact'))->render();
+            $html = view('admin.partials._detail_modal', compact('contact', 'genders'))->render();
 
             return response()->json([
                 'success' => true,

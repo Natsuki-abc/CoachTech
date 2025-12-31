@@ -38,7 +38,7 @@
     <tr class="admin-modal__row">
         <th class="admin-modal__column">お問い合わせの種類</th>
         <td class="admin-modal__value">
-            {{ $categories[$contact['category_id']] }}
+            {{ $contact->category['content'] }}
         </td>
     </tr>
     <tr class="admin-modal__row">
