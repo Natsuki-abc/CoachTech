@@ -57,7 +57,8 @@ $(function(){
         const res = await fetch(url, {
             method: 'GET',
             headers: {
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
             },
             signal: controller.signal
         });
@@ -68,8 +69,10 @@ $(function(){
             return;
         }
 
-        const html = await res.text();
-        cache.set(url, html);
-        modalBody.innerHTML = html;
+        const data = await res.json();
+        if (data.success) {
+            cache.set(url, data.html);
+            modalBody.append(data.html);
+        }
     }
 });
