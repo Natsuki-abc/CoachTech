@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::post('store', [ContactController::class, 'store'])->name('store');
 Route::get('thanks', [ContactController::class, 'thanks'])->name('thanks');
 
 // 管理画面
+Route::middleware('auth')->group(function () {
+    Route::get('admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('detail/{id}', [AdminController::class, 'detail'])->name('detail');
+    Route::get('delete', [AdminController::class, 'delete'])->name('delete');
+    Route::get('export', [AdminController::class, 'export'])->name('export');
+});

@@ -16,7 +16,7 @@
 <body>
     <main class="main">
 
-        <h1 class="contact-form__title font-family__title contact-thanks__overlay">Thank you</h1>
+        <h1 class="page-title font-family__title contact-thanks__overlay">Thank you</h1>
 
         <div class="contact-thanks">
             <h2 class="contact-thanks__heading">お問い合わせ<br class="sp_only">ありがとうございました</h2>

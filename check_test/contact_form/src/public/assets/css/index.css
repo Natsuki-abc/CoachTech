@@ -4,18 +4,6 @@
     text-align: center;
 }
 
-.contact-form__title {
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 16px;
-}
-@media screen and (min-width: 769px) {
-    .contact-form__title {
-        font-size: 28px;
-        margin-bottom: 24px;
-    }
-}
-
 .contact-form__table {
     text-align: left;
     width: 100%;
@@ -64,8 +52,4 @@
     .contact-form__value--row {
         gap: 24px;
     }
-}
-
-.contact-form__error {
-    color: #f08080;
 }

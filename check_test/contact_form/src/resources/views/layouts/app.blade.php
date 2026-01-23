@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/common.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
 
     @yield('css')
 </head>
@@ -20,6 +21,9 @@
     <main class="main">
         @yield('content')
     </main>
+
+    <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+    @yield('javascript')
 </body>
 
 </html>

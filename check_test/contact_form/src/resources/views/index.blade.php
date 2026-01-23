@@ -7,16 +7,16 @@
 @section('content')
 
 <div class="contact-form">
-    <h1 class="contact-form__title font-family__title">Contact</h1>
+    <h1 class="page-title font-family__title">Contact</h1>
 
     @if (session('error'))
-    <div class="contact-form__error">
+    <div class="error">
         {{ session('error') }}
     </div>
     @endif
 
     <form action="{{ route('confirm') }}" method="post" novalidate>
-    @csrf
+        @csrf
         <table class="contact-form__table">
             <tr class="contact-form__row">
                 <th class="contact-form__column required">お名前</th>
@@ -27,12 +27,12 @@
                     </div>
 
                     @error('last_name')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
                     @error('first_name')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -49,7 +49,7 @@
                     @endforeach
 
                     @error('gender')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -61,7 +61,7 @@
                     <input type="email" name="email" placeholder="例：test@example.com" value="{{ old('email', $data['email']) }}" />
 
                     @error('email')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -77,7 +77,7 @@
                     </div>
 
                     @error('tel')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -90,7 +90,7 @@
                     <input type="text" name="address" placeholder="例：東京都渋谷区道玄坂1丁目" value="{{ old('address', $data['address']) }}" />
 
                     @error('address')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -102,7 +102,7 @@
                     <input type="text" name="building" placeholder="例：道玄坂マンション101" value="{{ old('building', $data['building']) }}" />
 
                     @error('building')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -123,7 +123,7 @@
                     </div>
 
                     @error('category_id')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
@@ -135,7 +135,7 @@
                     <textarea name="detail" rows="10" placeholder="お問い合わせ内容をご記載ください">{{ old('detail', $data['detail']) }}</textarea>
 
                     @error('detail')
-                    <div class="contact-form__error">
+                    <div class="error">
                         {{ $message }}
                     </div>
                     @enderror
